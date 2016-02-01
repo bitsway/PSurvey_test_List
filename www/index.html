@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!-- Designed and developed by Business Solution Apps team -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>mReporting</title>
+		
+		<link rel="stylesheet" href="static/c.min.css" />
+		<link rel="stylesheet" href="static/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="static/jquery.mobile-1.4.5.min.css" />
+        
+		<script src="static/jquery-2.1.3.min.js">   </script>
+        <script src="static/jquery.mobile-1.4.5.min.js">   </script>
+		<script src="static/survey.js"></script>		
+    
+	
+
+	<style>
+	table.tbl_preview tr td { border:1px solid #5FAFAF; background-color:#EFF8F8;}
+	
+	.market {
+		font-size:16px;
+		color:#009191;
+		font-weight:600;
+   	 
+	}
+	.visit_client {
+		font-size:16px;
+		color:#009191;
+		font-weight:600;
+   	 
+	}
+	
+	</style>
+	</head>
+
+	
+    <body>
+
+	
+		<!-- =====================Home page=============== -->
+		<div data-theme="c" data-role="page" id="pageHome">
+			<div data-role="panel" id="routePanel" data-display="overlay" style="width:60%; background-color:#FFF">
+				
+				<div align="center">               
+                <br>
+				</div>
+                
+				<br><br><br><br>
+                
+				<ul data-role="listview">                    
+                    <br><br>
+                    <div style="background:#008A8A; height:1px"></div>
+                    <li ><a href="#login" ><img src="sync.png"></a></li> 
+                    <div style="background:#008A8A; height:1px"></div>
+                </ul>
+                
+				<div style="margin:100%;"></div>
+				
+			</div><!-- /panel -->
+			
+            <div data-theme="c" data-role="header" data-position="fixed" >			
+				<a  data-role="button" href="#routePanel" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+                <a  data-role="button" onClick="exit();" class="ui-btn-right" style="padding:4px;"><img src="exit.png" style="height:25px; width:25px;"></a>
+                <h3>Survey</h3>
+            </div>
+            
+            <div data-role="content" style="margin-top:0px; padding-top:0px; sheight:90%" >      
+            	
+                <div id="error_home_page" style="color:#B70000"></div>
+                <br>
+                <br>
+                
+                <a data-role="button" onClick="getPrescriptionImage();" ><img style="height:100px; width:150px" src="camera.png"></a>
+                <img src="" width="100%" height="150" alt="" id="myImagePrescription">
+                <input name="prescriptionPhoto" id="prescriptionPhoto" type="hidden" value="">
+                                  
+                 <br><br>
+
+                  <a  data-role="button" onClick="takePictureNext();doctor_visit();getLocation();" >Next</a>
+                  
+                  <br><br>
+             </div>	
+             
+             <br><br><br>
+			
+             <div data-theme="c" data-role="footer" data-position="fixed"></div>
+             			
+      </div>
+		
+
+	        <!--===================== pageSync ==================-->
+		<div data-theme="c" data-role="page" id="login">
+            <div data-theme="c" data-role="header" data-position="fixed">				
+				<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"> </a>
+                <h3>Authorization</h3>
+            </div>
+			
+            <div data-role="content">
+            	<div id="error_login" style="color:#C00"></div>                
+                    <form>		
+						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
+                        <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="">
+                        <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
+                    </form>						
+				
+				<a data-role="button" id="loginButton" onClick="check_user();" >Sync</a>
+				<div align="center"><img id="wait_image_login" style="" width="50px;" src="loading.gif" alt=""></div>
+                                
+                <br><br><br><br><br><br><br><br><br><br>
+                
+                <br><br><br><br><br><br>
+                <div  style="color:#030"    align="right">build-
+				20160126.1</div>    
+            </div>
+			
+        <!-- ==========footer====== -->	
+        
+        </div>		
+
+
+    
+<!--=====================Unschedule Market==================-->
+		<div data-theme="c" data-role="page" id="page_market">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
+            <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
+                <h3>Market</h3>
+            </div>
+			
+            <div data-role="content" style="margin-top:0; padding-top:0;">            	
+            	<div ><font style="font-weight:bold; font-size:13; color:#666"> Visit - Market</font></div><br>
+				
+			
+				<div id="err_market_next" style="color:#C00"></div> 
+                <div id="ret_cat" >
+				<select id="catCombo" width="60%" data-native-menu="false" >
+                <option value="" >Category</option>
+                </select>
+                
+				</div>
+                <input id="unschedule_market_combo_id" data-type="search"  placeholder="Search">
+				
+                <ul id="unschedule_market_combo_id_lv" data-role="listview" data-filter="true" data-input="#unschedule_market_combo_id" data-inset="true" >
+                </ul>
+                
+                
+                
+                <br/><br/>
+                <div style=" alignment-baseline: center"><img id="wait_image_unschedule_market" width="50" src="loading.gif" alt=""></div>
+                    
+                    
+            </div><!--/cont-->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed">
+			
+			</div>
+			
+		 </div><!--/page-->
+
+         
+<!-- =====================Unschedule: market retailer Page==================-->
+		<div data-theme="c" data-role="page" id="page_market_ret">
+            <div data-theme="c" data-role="header" data-position="fixed">
+			<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext" onClick="clear_mgs()"><img src="menu.png"></a>
+            <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
+                <h3><div id="d_visit"> Chemist</div></h3>
+            </div>
+			
+            <div data-role="content" style="margin-top:0; padding-top:0;">            	
+            	<div id="v_path" ><font style="font-weight:bold; font-size:13px; color:#666">Visit - Market - Chemist</font></div><br>
+				
+			
+				<div id="err_m_retailer_next" style="color:#C00"></div>
+				<!--<div><span class="market"></span></div>  -->
+                <div><span class="market" ></span></div>   
+
+				<br/>
+                
+				
+                <input id="unscheduled_m_client_combo_id" data-type="search" placeholder="Search"> 				
+                <ul id="unscheduled_m_client_combo_id_lv" data-role="listview" data-filter="true" data-input="#unscheduled_m_client_combo_id" data-inset="true" >
+                </ul>
+                
+				
+                <div align="center">
+                <img id="wait_image_ret" style="width:50" src="loading.gif" alt="">
+               </div>
+                <br>
+				<br>
+            </div><!--/cont-->
+			
+			<div data-theme="c" data-role="footer" data-position="fixed">
+			
+			</div>
+		 </div><!--/page-->
+			
+
+
+<!--=================Doctor===========================-->
+
+         <!--=====================Doctor Campaign Page==================-->
+		 
+		 
+		 <div data-theme="c" data-role="page" id="page_doctor_campaign">
+            <div data-theme="c" data-role="header" data-position="fixed" data-tap-toggle="false">
+			
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="70%">
+					<form class="ui-filterable">
+					<input type="text" data-iconpos="right" name="campaign_combo_id" id="campaign_combo_id" data-type="search"  >
+					</form>
+					
+					</td>
+                    <td width="10%"></td>
+                    <td align="right"><a style="height:20px; width:27" data-role="button" onClick="getDocCampaignData();" >Next</a>&nbsp;&nbsp;</td>
+                  </tr>
+                </table>
+            </div>
+			
+            <div data-role="content" style="overflow:scroll">
+				<div id="myerror_doctor_campaign" style="color:#C00"></div>
+				<ul data-inset="true"  data-role="listview">
+					<li>
+												
+						<div><b>Market :</b><span class="market"></span></div>
+                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+				<br>
+                <br>
+				<div id="doctor_campaign_list_tbl"></div>
+				
+                <br>
+                <br>
+			  
+			
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+            <br>                        
+            <br>
+            <br>            
+			<br>
+			
+            </div><!--/cont-->
+			
+			
+			<div data-theme="c" data-role="footer" data-position="fixed" align="left">
+            
+           &nbsp; 
+          
+           <a data-role="button" data-rel="back"  data-iconpos="left"   ><img src="back.png"></a>
+            </div>
+			
+		 </div><!--/page-->
+		 
+		
+         
+
+<!--==========================Profile====================-->
+<div data-theme="c" data-role="page" id="page_prescription">
+    <div data-theme="c" data-role="header" data-position="fixed">
+        <a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a>
+        <a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>
+        <h3>Submit</h3>
+    </div>
+    
+    <div data-role="content" style="height:90%">
+        <ul data-inset="true"  data-role="listview">
+					<li>
+												
+						<div><b>Market :</b><span class="market"></span></div>
+                        <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>                        
+					</li>					
+				</ul>
+        <table  border="0" class="ui-body-d ui-shadow table-stripe ui-responsive" data-role="table" data-theme="d"  data-mode="display:none" style="cell-spacing:0px; width:100%; font-size:98%;">
+        	<tr >
+             <!-- <td style="width:100%;" ><strong style="font-size:15px; color:#008040">Doctor:</strong><input id="doctor_name" name="doctor_name" type="text" placeholder="Doctor Name"></td>-->
+            </tr>
+            <tr >
+              <td style="width:100%;" ><strong style="font-size:15px; color:#008040">Others Medicine:</strong>
+              <input  id="medicine_1" name="medicine_1"  type="text" placeholder="Medicine Name"></td>
+            </tr>
+            <tr >
+              <td style="width:100%;" ><input id="medicine_2" name="medicine_2" type="text" placeholder="Medicine Name"></td>
+            </tr>
+            <tr >
+              <td style="width:100%;" ><input  id="medicine_3" name="medicine_3"  type="text" placeholder="Medicine Name"></td>
+            </tr>
+            <tr >
+              <td style="width:100%;" ><input  id="medicine_4" name="medicine_4"  type="text" placeholder="Medicine Name"></td>
+            </tr>
+            <tr >
+              <td style="width:100%;" ><input  id="medicine_5" name="medicine_5"  type="text" placeholder="Medicine Name"></td>
+            </tr>            
+        </table>
+        <br>
+        
+		
+        <input type="text" name="lat" id="lat" value="" readonly="True">
+		<input type="text" name="long" id="long" value="" readonly="True"><!--readonly-->
+        <div  id="btn_loc_submit"><a data-role="button" onClick="getLocation();" >Confirm Location</a></div>
+        <div id="error_prescription_submit" style="color:#B70000"></div>   
+        <br><br>
+        
+    	<div  id="btn_prescription_submit"><a  data-role="button" onClick="prescription_submit();">Submit</a></div>
+         
+        <div align="center"><img id="wait_image_prescription" style="" width="50px;" src="loading.gif" alt=""></div>
+        
+    </div><!--/cont-->
+    <br>
+	
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div data-theme="c" data-role="footer" data-position="fixed"></div>			
+ </div><!--/page-->
+ 
+ 
+ 
+<!-- ==================Product page start=======================-->
+<!-- ------------- Visit Success -------------------- -->
+	<div data-theme="c" data-role="page" id="page_success" >
+		<div data-theme="c" data-role="header" data-position="fixed" >
+		<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="menu.png"></a> 
+        <!--<a data-role="button" data-rel="back"  data-iconpos="left" class="ui-btn-right"><img src="back.png"></a>-->
+        <h3>Success</h3>
+	  </div>
+		<div data-role="content">
+        	
+            <br>			
+            <div id="success_message" style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; margin:0px auto; height:200px; color:#FFF; font-size:20px; vertical-align:middle; text-align:center; padding-top:5px;" ></br>Submitted Successfully</div>
+            
+            <br>
+            <br>
+            <br>
+            <a  data-role="button" href="#pageHome" >New</a><br>
+			<br>
+			
+		</div>
+		
+		<div data-theme="c" data-role="footer" data-position="fixed" style="text-align:center"></div>	
+	</div>
+
+
+
+    <script type="text/javascript" src="phonegap.js"></script>
+    
+    
+    </body>
+</html>
