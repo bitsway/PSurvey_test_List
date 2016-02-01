@@ -33,8 +33,10 @@ function onError(error) {
    $("#lat").val(0);
    $("#long").val(0);
    $("#error_prescription_submit").html("Failed to Confirmed Location.");
-   $("#btn_prescription_submit").hide();
-   $("#btn_loc_submit").show();
+   $("#btn_prescription_submit").show();
+   $("#btn_loc_submit").hide();
+  // $("#btn_prescription_submit").hide();
+  // $("#btn_loc_submit").show();
 }
 
 
@@ -413,7 +415,7 @@ function check_user() {
 													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
 													$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
 
-													$("ul.campaign_combo_id_lv").quickPagination();
+													
 													
 												
 													
@@ -460,7 +462,7 @@ function check_user() {
 													localStorage.synced='YES';
 													url = "#pageHome";
 													$.mobile.navigate(url);								
-													//location.reload();
+													location.reload();
 													
 													set_doc_all();
 													
@@ -1097,13 +1099,13 @@ function prescription_submit(){
 			var now = $.now();
 			var imageName=localStorage.user_id+'_'+now.toString()+'.jpg';
 			
-			if (latitude=='' || latitude==0 || longitude=='' || longitude==0){
-				$("#error_prescription_submit").html('Location not Confirmed');	
-				$("#wait_image_prescription").show();	
-			}else{
+			//if (latitude=='' || latitude==0 || longitude=='' || longitude==0){
+//				$("#error_prescription_submit").html('Location not Confirmed');	
+//				$("#wait_image_prescription").show();	
+//			}else{
 								
 				$("#wait_image_prescription").show();
-				$("#btn_prescription_submit").hide();
+			//	$("#btn_prescription_submit").show();
 				
 				var medicine_1=$("#medicine_1").val();
 				var medicine_2=$("#medicine_2").val();
@@ -1151,6 +1153,7 @@ function prescription_submit(){
 									$("#long").val("");
 									//alert ('1')
 									$("#prescriptionPhoto").val("");
+									
 									$("#wait_image_prescription").hide();
 									$("#btn_prescription_submit").hide();
 									//alert ('2')
@@ -1161,6 +1164,7 @@ function prescription_submit(){
    								    $("#btn_loc_submit").show();
 									url = "#page_success";
 									$.mobile.navigate(url);	
+									
 									
 								}else{						
 									$("#error_prescription_submit").html('Authentication error. Please register and sync to retry.');
@@ -1175,7 +1179,7 @@ function prescription_submit(){
 						  $("#btn_prescription_submit").show();
 					  }
 					  });//end ajax
-				}
+				//}
 			}
 		
 		}
@@ -1195,6 +1199,13 @@ function clear_mgs(){
 	$("#myerror_doctor_campaign").html('');
 	
 	$("#error_prescription_submit").html('');
+
+	
+}
+function new_ps(){
+	url = "#pageHome";
+	$.mobile.navigate(url);	
+	location.reload();
 
 	
 }
@@ -1332,7 +1343,6 @@ $(document).ready(function(){
 	
 	//set doctor
 	$('#doctor_campaign_list_tbl').html(localStorage.product_tbl_str_doc_campaign);
-	$("ul.campaign_combo_id_lv").quickPagination();
 	clear_mgs();
 
 });
@@ -1656,7 +1666,7 @@ $.mobile.document
 
 function takePictureNext(){	
 	$("#error_home_page").html("");
-	$("#btn_prescription_submit").hide();
+	$("#btn_prescription_submit").show();
 	
 	var pres_photo=$("#prescriptionPhoto").val();
 	

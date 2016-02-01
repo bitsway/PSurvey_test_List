@@ -112,7 +112,7 @@
                 
                 <br><br><br><br><br><br>
                 <div  style="color:#030"    align="right">build-
-				20160126.1</div>    
+				20160127.1</div>    
             </div>
 			
         <!-- ==========footer====== -->	
@@ -309,9 +309,9 @@
         <br>
         
 		
-        <input type="text" name="lat" id="lat" value="" readonly="True">
-		<input type="text" name="long" id="long" value="" readonly="True"><!--readonly-->
-        <div  id="btn_loc_submit"><a data-role="button" onClick="getLocation();" >Confirm Location</a></div>
+        <input type="hidden" name="lat" id="lat" value="" readonly="True">
+		<input type="hidden" name="long" id="long" value="" readonly="True"><!--readonly-->
+        <div  id="btn_loc_submit" style="display:none"><a data-role="button" onClick="getLocation();" >Confirm Location</a></div>
         <div id="error_prescription_submit" style="color:#B70000"></div>   
         <br><br>
         
@@ -349,7 +349,7 @@
             <br>
             <br>
             <br>
-            <a  data-role="button" href="#pageHome" >New</a><br>
+            <a  data-role="button" onClick="new_ps()" >New</a><br>
 			<br>
 			
 		</div>
