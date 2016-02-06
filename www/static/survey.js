@@ -389,7 +389,7 @@ function check_user() {
 													//alert ('1')
 													
 													//var product_tbl_doc_campaign='<ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id" data-inset="true" data-filter-reveal="true" > ';
-													var product_tbl_doc_campaign='<ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id"  data-filter-reveal="true" > ';
+													var product_tbl_doc_campaign='<ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id" > ';
 													
 
 													for (j=0; j < productLength; j++){
@@ -416,7 +416,7 @@ function check_user() {
 													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
 													$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
 
-													
+													//$("ul.campaign_combo_id_lv").quickPagination();
 													$('#campaign_combo_id_lv').listview();
 												
 													
