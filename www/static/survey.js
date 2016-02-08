@@ -413,7 +413,9 @@ function check_user() {
 													}
 													
 													product_tbl_doc_campaign=product_tbl_doc_campaign+'</ul>';//+'</table>'	//+'</ul>';						
-													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
+													//localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
+													
+													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign=product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign+product_tbl_doc_campaign;
 													$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
 
 													//$("ul.campaign_combo_id_lv").quickPagination();
