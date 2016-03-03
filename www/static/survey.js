@@ -170,10 +170,10 @@ function check_user() {
 
 	
 	//var  apipath_base_photo_dm='http://c003.cloudapp.net/mrepacme/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
+	var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	
-  var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_prescription/get_path?CID='+cid +'&HTTPPASS=e99business321cba';
+  //var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_prescription/get_path?CID='+cid +'&HTTPPASS=e99business321cba';
 	
 	
 	var user_id=$("#user_id").val();
@@ -392,7 +392,7 @@ function check_user() {
 												
 												var product_tbl_doc_campaign='<ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id" > ';
 													
-													productLength=50;
+													//productLength=50;
 													for (j=0; j < productLength; j++){
 														var productArray2 = productList[j].split('<fd>');
 														var product_id2=productArray2[0];	
@@ -415,9 +415,9 @@ function check_user() {
 													
 													product_tbl_doc_campaign=product_tbl_doc_campaign+'</ul>';//+'</table>'	//+'</ul>';						
 													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
-													$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
+																		//$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
 
-													$('#campaign_combo_id_lv').listview();
+//													$('#campaign_combo_id_lv').listview();
 													
 												
 													
@@ -924,6 +924,9 @@ function marketRetailerNext_doc() {
 		var url = "#page_doctor_campaign";
 		$.mobile.navigate(url);
 		
+		$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
+
+		$('#campaign_combo_id_lv').listview();
 		//location.reload();
 							
 			
@@ -1345,8 +1348,8 @@ $(document).ready(function(){
 	first_page();
 	
 	//set doctor
-	$('#doctor_campaign_list_tbl').html(localStorage.product_tbl_str_doc_campaign);
-	$('#campaign_combo_id_lv').listview();
+	//$('#doctor_campaign_list_tbl').html(localStorage.product_tbl_str_doc_campaign);
+	//$('#campaign_combo_id_lv').listview();
 	
 	clear_mgs();
 
