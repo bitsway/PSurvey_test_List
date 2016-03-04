@@ -210,8 +210,9 @@
                   <tr>
                     <td width="70%">
 					<form class="ui-filterable">
-					<input type="text" data-iconpos="right" name="campaign_combo_id" id="campaign_combo_id" data-type="search"  >
+					<input type="text" data-iconpos="right" name="campaign_combo_id" onKeyUp="new_list()" id="campaign_combo_id" data-type="search"  >
 					</form>
+                  
 					
 					</td>
                     <td width="10%"></td>
@@ -231,7 +232,10 @@
 				</ul>
 				<br>
                 <br>
-				<div id="doctor_campaign_list_tbl"></div>
+				<div id="doctor_campaign_list_tbl">
+                
+                <ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id" > </ul>
+                </div>
 				
                 <br>
                 <br>
@@ -309,8 +313,8 @@
         <br>
         
 		
-        <input type="hidden" name="lat" id="lat" value="" readonly="True">
-		<input type="hidden" name="long" id="long" value="" readonly="True"><!--readonly-->
+        <input type="hidden" name="lat" id="lat" value="" readonly>
+		<input type="hidden" name="long" id="long" value="" readonly><!--readonly-->
         <div  id="btn_loc_submit" style="display:none"><a data-role="button" onClick="getLocation();" >Confirm Location</a></div>
         <div id="error_prescription_submit" style="color:#B70000"></div>   
         <br><br>

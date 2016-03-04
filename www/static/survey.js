@@ -390,9 +390,11 @@ function check_user() {
 													
 												//	var product_tbl_doc_campaign='<ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id" data-inset="true" data-filter-reveal="true" > ';
 												
-												var product_tbl_doc_campaign='<ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id" > ';
+												//var product_tbl_doc_campaign='<ul id="campaign_combo_id_lv" data-role="listview"  data-filter="true" data-input="#campaign_combo_id" > ';
 													
 													//productLength=50;
+													var product_tbl_doc_campaign_a=''
+													var product_tbl_doc_campaign_b=''
 													for (j=0; j < productLength; j++){
 														var productArray2 = productList[j].split('<fd>');
 														var product_id2=productArray2[0];	
@@ -402,10 +404,18 @@ function check_user() {
 														var product_qty='';																		
 
 
+														//alert (product_name2)
+														//alert (product_name2.indexOf("A"))
+														if (product_name2.indexOf("A")==0){
+														product_tbl_doc_campaign_a=product_tbl_doc_campaign_a+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox" onClick="getDocCampaignData_keyup(\''+product_id2+'\')" name="doc_camp'+product_id2+'" value="checkbox" id="doc_camp'+product_id2+'"><input type="hidden" id="doc_camp_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="doc_camp_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="doc_camp_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'<font id="'+ product_id2 +'" onClick="tr_item_doc_campaign(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 														
+														}
+														//alert ('dsfs')
+														if (product_name2.indexOf("B")==0){
+														product_tbl_doc_campaign_b=product_tbl_doc_campaign_b+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox" onClick="getDocCampaignData_keyup(\''+product_id2+'\')" name="doc_camp'+product_id2+'" value="checkbox" id="doc_camp'+product_id2+'"><input type="hidden" id="doc_camp_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="doc_camp_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="doc_camp_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'<font id="'+ product_id2 +'" onClick="tr_item_doc_campaign(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 														
-														product_tbl_doc_campaign=product_tbl_doc_campaign+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin">'+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox" onClick="getDocCampaignData_keyup(\''+product_id2+'\')" name="doc_camp'+product_id2+'" value="checkbox" id="doc_camp'+product_id2+'"><input type="hidden" id="doc_camp_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="doc_camp_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="doc_camp_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'<font id="'+ product_id2 +'" onClick="tr_item_doc_campaign(\''+product_id2+'\')" >'+ product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
-
+														}
+														
 														$("#error_login").html('Processing Product List....');	
 														//-------------Sample----------
 													
@@ -413,8 +423,15 @@ function check_user() {
 													
 													}
 													
-													product_tbl_doc_campaign=product_tbl_doc_campaign+'</ul>';//+'</table>'	//+'</ul>';						
-													localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
+													
+													localStorage.product_tbl_doc_campaign_a=product_tbl_doc_campaign_a;
+													localStorage.product_tbl_doc_campaign_b=product_tbl_doc_campaign_b;
+													
+												//	product_tbl_doc_campaign=product_tbl_doc_campaign+'</ul>';//+'</table>'	//+'</ul>';											
+													
+													
+													
+													//localStorage.product_tbl_str_doc_campaign=product_tbl_doc_campaign;
 																		//$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
 
 //													$('#campaign_combo_id_lv').listview();
@@ -924,17 +941,33 @@ function marketRetailerNext_doc() {
 		var url = "#page_doctor_campaign";
 		$.mobile.navigate(url);
 		
-		$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
+		//$("#doctor_campaign_list_tbl").html(localStorage.product_tbl_str_doc_campaign);
 
-		$('#campaign_combo_id_lv').listview();
+		//$('#campaign_combo_id_lv').listview();
 		//location.reload();
-							
+		//alert (localStorage.product_tbl_doc_campaign_b)
+		$("campaign_combo_id_lv").empty()
+		$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign_a);					
 			
 	
 	}
 }
 //=========================
-
+function new_list(){
+	var list_alphabet=$("#campaign_combo_id").val().toUpperCase();
+	//alert (list_alphabet.length)
+	if (list_alphabet.length==1){
+		if (list_alphabet=='A'){
+				$("campaign_combo_id_lv").empty()
+				$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign_a);
+		}
+		else if (list_alphabet=='B'){
+				$("campaign_combo_id_lv").empty()
+				$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign_b);
+				$("#campaign_combo_id_lv").listview('refresh');
+		}
+	}
+}
 
 function getCampaign(){
 	localStorage.campaign=1;
@@ -1097,7 +1130,7 @@ function prescription_submit(){
 		
 		var prescriptionPhoto=$("#prescriptionPhoto").val();
 		//var prescriptionPhoto='aa';
-		//prescriptionPhoto='dasdfadf'
+		prescriptionPhoto='dasdfadf'
 		if (prescriptionPhoto==''){
 			$("#error_prescription_submit").html('Required picture');
 			$("#wait_image_prescription").show();
