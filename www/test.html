@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<script>
+function mysearch() {
+    var filter = input.value.toUpperCase();
+    var lis = document.getElementsByTagName('li');
+	alert(lis);
+    for (var i = 0; i < lis.length; i++) {
+        var name = lis[i].getElementsByClassName('name')[0].innerHTML;
+        if (name.toUpperCase().indexOf(filter) == 0) 
+            lis[i].style.display = 'list-item';
+        else
+            lis[i].style.display = 'none';
+    }
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<input type="text" id="input" onkeyup="mysearch()" />
+
+<ul>
+<li class="thumb selectable arrow light" style="margin-bottom:-5px;"
+data-image="http://cdn.tapquo.com/lungo/icon-144.png">
+<strong class="name">Andrew</strong> 
+<small class="description">Hi!</small> 
+</li>
+<li class="thumb selectable arrow light" style="margin-bottom:-5px;"
+data-image="http://cdn.tapquo.com/lungo/icon-144.png">
+<strong class="name">John</strong> 
+<small class="description">Hi!</small> 
+</li>
+<li class="thumb selectable arrow light" style="margin-bottom:-5px;"
+data-image="http://cdn.tapquo.com/lungo/icon-144.png">
+<strong class="name">Peter</strong> 
+<small class="description">Hi!</small> 
+</li>
+</ul>
+</body>
+</html>
