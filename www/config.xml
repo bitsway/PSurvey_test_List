@@ -3,13 +3,13 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.businesssolutionapps.psurveyTest"
+        id        = "com.businesssolutionapps.psurvey"
         version   = "1.0.1">
 
-    <name>PSurveyTest</name>
+    <name>PSurvey</name>
 
     <description>
-        PSurveyTest
+        PSurvey
     </description>
 
     <author href="http://phonegap.com" email="sabbir456@gmail.com">
