@@ -1,4 +1,20 @@
-						
+function getLocation() {
+	
+	var options = { enableHighAccuracy: false};
+	navigator.geolocation.getCurrentPosition(onSuccess, onError , options);	
+}
+
+// onSuccess Geolocation
+function onSuccess(position) {
+	alert (position.coords.latitude);
+	alert (position.coords.longitude);
+	
+}
+
+// onError Callback receives a PositionError object
+function onError(error) {
+   alert ('Failed');
+}						
 //========================= Longin: Check user
 
 function check_user() {
