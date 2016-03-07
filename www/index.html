@@ -57,7 +57,15 @@
     $(document).ready(function(){
         $.afui.launch();
 		$("#wait_image_login").hide();
-		getLocation();	
+		$("#wait_image_ret").hide();
+		$("#wait_image_prescription").hide();
+
+		
+		$('#market_combo_id_lv').empty();
+		$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
+		$("#campaign_combo_id_lv").empty()
+		$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign);
+		$.afui.loadContent("#imagePage",true,true,"up");	
 
     });
 
@@ -89,9 +97,9 @@
     
     
   <div class="view" id="mainview"> 
-        <header>
+<!--        <header>
             <h1>Main</h1>
-        </header>
+        </header>-->
         <div class="pages">
         
         
@@ -101,45 +109,43 @@
             
           
  
-            <div class="panel" id="imagePage">
+             <div data-left-drawer="left" class="panel" ></div>
+            
+            
+            <!--//===================ImagePage-->
+            <div data-left-drawer="left" class="panel" id="imagePage" data-title="Image capture " >
+          
                 <br>
                 <div class="card">
-                    <h1>Login</h1>
-                    <br>
+
+
+                   
+                    
+                    
                     <div id="error_login" style="color:#C00"></div> 
                     <div class="input-group">
                     
-                    <ul>
+                    <ul class="list">
                      <li>
                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic" onClick="getPrescriptionImage()"></td>
-                                <td width="33%" align="center"><img src="images.png" width="70" height="70" alt="Image"></td>
-                                <td width="33%" align="center" onClick="gotopagetest()"><img src="icon-arrow-right.png" width="70" height="70" alt="Next" ></td>
+                                <td width="33%" align="center"><img src="" width="70" height="70" alt="Image" id="myImagePrescription_1"></td>
+                                <td width="33%" align="center" onClick="gotoMarket()"><img src="icon-arrow-right.png" width="70" height="70" alt="Next" ></td>
                               </tr>
                             </table>
-                                                                    <script>
-										function gotopagetest(){
-											//window.location.hash = "jump_to_this_location";
-											$.afui.loadContent("#territory",false,false);
-										}
-										</script>
+                                                                
 
                         </li>
                     <li>
                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" onClick="getPrescriptionImage()" width="70" height="70" alt="TakePic"></td>
-                                <td width="33%" align="center"><img src="images.png" width="70" height="70" alt="Image"></td>
-                                <td width="33%" align="center" onClick="gotopagetest()"><img src="icon-arrow-right.png" width="70" height="70" alt="Next" ></td>
+                                <td width="33%" align="center"><img src="" width="70" height="70" alt="Image"  id="myImagePrescription_2"></td>
+                                <td width="33%" align="center" onClick="gotoMarket()"><img src="icon-arrow-right.png" width="70" height="70" alt="Next" ></td>
                               </tr>
                             </table>
-                                                                    <script>
-										function gotopagetest(){
-											//window.location.hash = "jump_to_this_location";
-											$.afui.loadContent("#territory",false,false);
-										}
-										</script>
+                                                      
 
                         </li>
                         
@@ -147,40 +153,240 @@
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic"></td>
-                                <td width="33%" align="center"><img src="images.png" width="70" height="70" alt="Image"></td>
-                                <td width="33%" align="center"><img src="icon-arrow-right.png" width="70" height="70" alt="Next"></td>
+                                <td width="33%" align="center"><img src="" width="70" height="70" alt="Image" id="myImagePrescription_3"></td>
+                                <td width="33%" align="center" onClick="gotoMarket();getLocation();"><img src="icon-arrow-right.png" width="70" height="70" alt="Next"></td>
                               </tr>
                             </table>
                         </li>
                         
-                        <li>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic"></td>
-                                <td width="33%" align="center"><img src="images.png" width="70" height="70" alt="Image"></td>
-                                <td width="33%" align="center"><img src="icon-arrow-right.png" width="70" height="70" alt="Next"></td>
-                              </tr>
-                            </table>
-                        </li>                        
+                                       
 
 
 
                     </ul>
                     				
                     </div>
+				</br></br></br></br>
+                
                     
                    
                     
                 </div>
             </div>
+            
+            
+            
+            
+            <!--===========================Market-->
+           <div data-left-drawer="left" class="panel" id="marketPage" data-title="Market " >
+          
+                <br>
+                <!--<div class="card">-->
+   
+                    
+                    <div id="error_login" style="color:#C00"></div> 
+                    <div class="input-group">
+                <div class="input-group">   
+                 <input type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="mysearch()"  />
+                </div>
+				
+                 <ul class="list" id="market_combo_id_lv" >
+                
+                </ul>
+                 <!--   				
+                    </div>-->
+                    
+                   
+                    
+                </div>
+            </div>
+            
+            
+           <!-- //======================Doctor-->
+         
+           <div data-left-drawer="left" class="panel" id="page_doctor" data-title="Doctor" >
+          
+                <br>
+                <!--<div class="card">-->
+          
+                    </br>
+                    <div><b>Market :</b><span class="market"></span></div>
+                    <br>
+                    
+                    
+                    <div id="err_m_retailer_next" style="color:#C00"></div> 
+                    <div class="input-group">
+                 
+                 <input type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="mysearch()"  />
+                </div>
+
+                 <ul class="list" id="doctor_combo_id_lv" >
+                
+                </ul>
+                    	<img id="wait_image_ret" style="width:50" src="loading.gif" alt="">			
+                    
+                    
+                   
+                    
+               <!-- </div>-->
+            </div>
+            
+            
+            
+            
+            
+            <!-- //======================Product-->
+         
+           <div data-left-drawer="left" class="panel" id="page_doctor_campaign" data-title="Product" >
+          
+                <br>
+              <!--  <div class="card">-->
+
+                    <div><b>Market :</b><span class="market"></span></div>
+                     <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>   
+                    
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="70%">
+					<div class="input-group">   
+                 <input id="itemSearch" type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="searchItem()"  />
+                </div>
+                  
+					
+					</td>
+                    <td width="10%"></td>
+                    <td align="right">
+                     
+     <input type="submit" id="input" style="height:50px; background-color:#09C" value="     Next >>     " onClick="getDocCampaignData()"  />
+             
+                    </td>
+                  </tr>
+                </table>
+                    
+                    <div id="myerror_doctor_campaign" style="color:#C00"></div> 
+                    <div class="input-group">
+                
+				
+                 <ul class="list" id="campaign_combo_id_lv" >
+                
+                </ul>
+                    		
+                    </div>
+                    
+                   
+                    
+               <!-- </div>-->
+            </div>
+            
+ 
+ 		 <!--===========================Othesr-->
+           <div data-left-drawer="left" class="panel" id="page_prescription" data-title="Other Medicine" >
+          
+                <br>
+               <!-- <div class="card">-->
+
+                    
+                    <div id="error_login" style="color:#C00"></div> 
+                    <div class="input-group">
+
+                             <table  border="0" class="ui-body-d ui-shadow table-stripe ui-responsive" data-role="table" data-theme="d"  data-mode="display:none" style="cell-spacing:0px; width:100%; font-size:98%;">
+                        <tr >
+                         <!-- <td style="width:100%;" ><strong style="font-size:15px; color:#008040">Doctor:</strong><input id="doctor_name" name="doctor_name" type="text" placeholder="Doctor Name"></td>-->
+                        </tr>
+                        <tr >
+                          <td ><strong style="font-size:15px; color:#008040">Others Medicine:</strong>
+                          </td> 
+                          </tr>  
+                          <tr >
+                          <td >                        
+                           <input type="text" id="medicine_1" style="width:100%" placeholder="Medicine Name 1"   />
+                          </td>
+                          
+                        </tr>
+                        <tr >
+                          <td >
+                          <input type="text" id="medicine_2" style="width:100%" placeholder="Medicine Name 2"   />
+                           </td >
+                        </tr>
+                        <tr >
+                          <td >
+                          <input type="text" id="medicine_3" style="width:100%" placeholder="Medicine Name 3"   />
+                           </td >
+                        </tr>
+                               
+                    </table>
+                    
+                    
+                    
+                    <br>
+        
+                        
+                        <input type="hidden" name="lat" id="lat" value="" readonly>
+                        <input type="hidden" name="long" id="long" value="" readonly><!--readonly-->
+                        <div  id="btn_loc_submit" style="display:none"><a data-role="button" onClick="getLocation();" >Confirm Location</a></div>
+                        <div id="error_prescription_submit" style="color:#B70000"></div>   
+                        <br><br>
+                        
+                        <div  id="btn_prescription_submit">
+                         <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C" value="     Submit     " onClick="prescription_submit()"  />
+                        
+                        </div>
+                         
+                        <div align="center">
+                        <img id="wait_image_prescription" style="" width="50px;" src="loading.gif" alt="">
+                        </div>
+                </div>
+			
+                
+
+                    
+                   
+                    
+             <!--   </div>-->
+            </div>
+ 
+ 
+ 
+ 			<!-- //======================Success-->
+         
+           <div data-left-drawer="left" class="panel" id="page_success" data-title="Success " >
+          
+                <br>
+              <!--  <div class="card">-->
+          
+                 <div id="success_message" style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; margin:0px auto; height:200px; color:#FFF; font-size:20px; vertical-align:middle; text-align:center; padding-top:5px;" ></br>Submitted Successfully</div>
+            
+            <br>
+            <br>
+            <br>
+            <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C" value="     New     " onClick="new_ps()"  />
+          
+			<br>
+                    
+                   
+                    
+               <!-- </div>-->
+            </div>
+ 
+ 
+ 
  
             
-                        <div id="afforms" title="Form Styles" class="panel" data-include="partials/forms.html"></div>
+                      <!--  <div id="afforms" title="Form Styles" class="panel" data-include="partials/forms.html"></div>-->
 
-            <div id="lockscreen" title="Lock Screen" class="panel" data-include="partials/lockscreen.html"></div>
+            <!--<div id="lockscreen" title="Lock Screen" class="panel" data-include="partials/lockscreen.html"></div>-->
         </div>
+        
+        
+        
         <footer>
+        
+            <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+             <a href="#login"> Sync </a>
 
+           <!-- <a href="#main" class="icon html5" data-transition="slide"></a>
+            <a href="#main" class="icon trash" data-transition="up-reveal"></a>
+            <a href="/foo/bar" class="icon trash"  data-transition="slide"></a>-->
         </footer>
 
        
@@ -190,13 +396,13 @@
             
             
             
-            //============Login page Start
+          <!--  //============Login page Start-->
     <div class="view" id="loginView">
         <div class="pages">
             <div class="panel" id="login">
                 <br>
                 <div class="card">
-                    <h1>Login</h1>
+                    <h1>Sync</h1>
                     <br>
                     <div id="error_login" style="color:#C00"></div> 
                     <div class="input-group">
@@ -206,7 +412,7 @@
                         <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
                     </form>						
                     </div>
-                    <a class='button' href='#main' data-transition='up-reveal:dismiss'>Cancel</a>
+                    
                     <a class='button' id="loginButton" onClick="check_user()"  data-transition='up-reveal:dismiss'>Sync</a>
                     
                     <div align="center"><img id="wait_image_login" style="" width="50px;" src="loading.gif" alt=""></div>
@@ -215,88 +421,27 @@
             </div>
         </div>
         <footer>
-
+		 <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+          <a href="#imagePage"></a>
         </footer>
 
     </div>
 
-            
+      
+
              <!--Select territory page --------------------------------------------------------------- --> 
             
             
             
             
-             <div data-left-drawer="left" class="panel" id="territory" data-title="Select territory " >
              
 
-                <script>
-				function tClick(){
-					//window.location.hash = "jump_to_this_location";
-					$.afui.loadContent("#main",false,false);
-				}
-				</script>
-                
-                
-                <div class="button" onClick="tClick()">hello</div>
-                
-                <ul class="list">
-                    <li><a href="#login" data-transition="up-reveal">Login View (modal)</a></li>
-                
-                </ul>
-                
-                
-                
-                
-                
-                
-                <script>
-				function mysearch() {
-					
-					var filter = input.value.toUpperCase();
-					//var lis = document.getElementsById('mylist');
-					 var lis =document.getElementById("mylist").getElementsByTagName("li");
-					//var lis = document.getElementsByTagName('ul>li');
-					//alert(lis.length);
-					for (var i = 0; i < lis.length; i++) {
-						var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-						
-						if (name.toUpperCase().indexOf(filter) == 0) 
-							lis[i].style.display = 'list-item';
-						else
-							lis[i].style.display = 'none';
-					}
-				}
-				</script>
-                <input type="text" id="input" style="width:100px" placeholder="Search" onKeyUp="mysearch()"  />
-                
-                <ul class="list" id="mylist" >
-
-             
-                
-                </li>
-                </ul>
-                
-                
-
-                </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-                </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>                
-                
-                
-                <span id='jump_to_this_location'>Jump here!</span>
-            
-            
-            </div>
-            
-
-            
-            <!-- End of Select territory page --------------------------------------------------------------- --> 
-            
             
                       
             
             
             
-           
+            <script type="text/javascript" src="phonegap.js"></script>
 
           
               
@@ -304,7 +449,7 @@
 
 
 
- <script type="text/javascript" src="phonegap.js"></script>
+
     
     
 </body>
