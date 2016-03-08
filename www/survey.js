@@ -221,6 +221,10 @@ function check_user() {
 
 function gotoMarket(pic_no) {
 	//alert (pic_no)
+	if (pic_no!=localStorage.pic_no){
+		$("#campaign_combo_id_lv").empty()
+		$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign);
+	}
 	localStorage.pic_no=pic_no
 	$.afui.loadContent("#marketPage",true,true);
 }
@@ -579,17 +583,21 @@ function prescription_submit(){
 											//alert ('0')
 											alert (localStorage.pic_no)
 											if (localStorage.pic_no==1){
+												alert (localStorage.pic_no)
 												$("#prescriptionPhoto_1").val('');
+												
 											}
 											else if (localStorage.pic_no==2){
+												alert (localStorage.pic_no)
 												$("#prescriptionPhoto_2").val('');
 											}
 											else if (localStorage.pic_no==3){
+												alert (localStorage.pic_no)
 												$("#prescriptionPhoto_3").val('');
 											}
 											
 											
-											localStorage.pic_no='';
+											//localStorage.pic_no='';
 											
 											//$("#doctor_name").val("");
 											$("#medicine_1").val("");
@@ -717,11 +725,11 @@ function getPrescriptionImage_3() {
 		
 }
 function onSuccess_3(imageURI) {
-	//alert ('Success')
+	alert ('Success')
     var image = document.getElementById('myImagePrescription_3');
     image.src = imageURI;
 	imagePath = imageURI;
-	$("#prescriptionPhoto_1").val(imagePath);
+	$("#prescriptionPhoto_3").val(imagePath);
 }
 function onFail_3(message) {
 	//alert ('Fail')
