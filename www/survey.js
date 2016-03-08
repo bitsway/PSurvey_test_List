@@ -511,10 +511,10 @@ function prescription_submit(){
 		if (localStorage.pic_no==1){
 			prescriptionPhoto=$("#prescriptionPhoto_1").val();
 		}
-		if (localStorage.pic_no==2){
+		else if (localStorage.pic_no==2){
 			prescriptionPhoto=$("#prescriptionPhoto_2").val();
 		}
-		if (localStorage.pic_no==3){
+		else if (localStorage.pic_no==3){
 			prescriptionPhoto=$("#prescriptionPhoto_3").val();
 		}
 		//prescriptionPhoto='dasdfadf'
@@ -577,14 +577,14 @@ function prescription_submit(){
 											//image upload function									
 											uploadPhoto(prescriptionPhoto, imageName);
 											//alert ('0')
-											
+											alert (localStorage.pic_no)
 											if (localStorage.pic_no==1){
 												$("#prescriptionPhoto_1").val('');
 											}
-											if (localStorage.pic_no==2){
+											else if (localStorage.pic_no==2){
 												$("#prescriptionPhoto_2").val('');
 											}
-											if (localStorage.pic_no==3){
+											else if (localStorage.pic_no==3){
 												$("#prescriptionPhoto_3").val('');
 											}
 											
@@ -732,7 +732,7 @@ function onFail_3(message) {
 
 
 function uploadPhoto(imageURI, imageName) {
-    alert (localStorage.photo_submit_url)
+   // alert (localStorage.photo_submit_url)
 	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageName;
