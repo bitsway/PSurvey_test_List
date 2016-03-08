@@ -219,7 +219,9 @@ function check_user() {
 		  }//end else	
 	}//function
 
-function gotoMarket() {
+function gotoMarket(pic_no) {
+	//alert (pic_no)
+	localStorage.pic_no=pic_no
 	$.afui.loadContent("#marketPage",true,true);
 }
 
@@ -489,7 +491,8 @@ function addMarketList() {
 //============================================================
 function prescription_submit(){
 	$("#error_prescription_submit").html("")		
-	$("#wait_image_prescription").hide();
+	$("#wait_image_prescription").show();
+	$("#btn_prescription_submit").hide();
 	
 	var doctorId=localStorage.visit_client.split('|')[1]	
 	var doctor_name=localStorage.visit_client.split('|')[0]
@@ -499,17 +502,26 @@ function prescription_submit(){
 	if (doctor_name==''){		
 		$("#error_prescription_submit").text("Required Doctor");
 		$("#wait_image_prescription").show();
+		$("#btn_prescription_submit").hide();
 	}else{
 		
 		var latitude=$("#lat").val();
 		var longitude=$("#long").val();		
-		
-		var prescriptionPhoto=$("#prescriptionPhoto").val();
-		//var prescriptionPhoto='aa';
+		var prescriptionPhoto
+		if (localStorage.pic_no==1){
+			prescriptionPhoto=$("#prescriptionPhoto_1").val();
+		}
+		if (localStorage.pic_no==2){
+			prescriptionPhoto=$("#prescriptionPhoto_2").val();
+		}
+		if (localStorage.pic_no==3){
+			prescriptionPhoto=$("#prescriptionPhoto_3").val();
+		}
 		prescriptionPhoto='dasdfadf'
 		if (prescriptionPhoto==''){
 			$("#error_prescription_submit").html('Required picture');
 			$("#wait_image_prescription").show();
+			$("#btn_prescription_submit").hide();
 		}else{			
 			var now = $.now();
 			var imageName=localStorage.user_id+'_'+now.toString()+'.jpg';
@@ -549,10 +561,7 @@ function prescription_submit(){
 									$("#btn_prescription_submit").show();
 								}
 								else{
-										
-										
-										var resultArray = data.split('<SYNCDATA>');	
-											
+									   var resultArray = data.split('<SYNCDATA>');	
 										if (resultArray[0]=='FAILED'){						
 											$("#error_prescription_submit").html(resultArray[1]);
 											$("#wait_image_prescription").hide();
@@ -566,15 +575,28 @@ function prescription_submit(){
 											document.getElementById('myImagePrescription_3').src = '';
 											
 											//image upload function									
-											//uploadPhoto(prescriptionPhoto, imageName);
+											uploadPhoto(prescriptionPhoto, imageName);
 											//alert ('0')
+											
+											if (localStorage.pic_no==1){
+												$("#prescriptionPhoto_1").val('');
+											}
+											if (localStorage.pic_no==2){
+												$("#prescriptionPhoto_2").val('');
+											}
+											if (localStorage.pic_no==3){
+												$("#prescriptionPhoto_3").val('');
+											}
+											
+											
+											localStorage.pic_no='';
 											
 											//$("#doctor_name").val("");
 											$("#medicine_1").val("");
 											$("#medicine_2").val("");
 											$("#medicine_3").val("");
 											
-											//alert (data)
+											//alert (localStorage.pic_no)
 											localStorage.campaign_doc_str=''
 											
 											$("#lat").val("");
@@ -640,30 +662,98 @@ function searchItem() {
 
 
 
-function getPrescriptionImage() {
+function getPrescriptionImage_1() {
 	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
 		//destinationType: Camera.DestinationType.FILE_URI });
-   alert ('Camera')
-   navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 90,
+   navigator.camera.getPicture(onSuccess_1, onFail_1, { quality: 90,
 		targetWidth: 400,
 		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
 		
 }
-function onSuccessProfile(imageURI) {
-	alert ('Success')
-    //var image = document.getElementById('myImagePrescription');
-//    image.src = imageURI;
-//	imagePath = imageURI;
-//	$("#prescriptionPhoto").val(imagePath);
+function onSuccess_1(imageURI) {
+	//alert ('Success')
+    var image = document.getElementById('myImagePrescription_1');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#prescriptionPhoto_1").val(imagePath);
 }
-function onFailProfile(message) {
-	alert ('Fail')
-	//imagePath="";
-//    alert('Failed because: ' + message);
+function onFail_1(message) {
+	//alert ('Fail')
+	imagePath="";
+    alert('Failed because: ' + message);
+}
+
+
+function getPrescriptionImage_2() {
+	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
+		//destinationType: Camera.DestinationType.FILE_URI });
+   
+   navigator.camera.getPicture(onSuccess_2, onFail_2, { quality: 90,
+		targetWidth: 400,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+		
+}
+function onSuccess_2(imageURI) {
+	//alert ('Success')
+    var image = document.getElementById('myImagePrescription_2');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#prescriptionPhoto_2").val(imagePath);
+}
+function onFail_2(message) {
+	//alert ('Fail')
+	imagePath="";
+    alert('Failed because: ' + message);
+}
+
+
+function getPrescriptionImage_3() {
+	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
+		//destinationType: Camera.DestinationType.FILE_URI });
+  
+   navigator.camera.getPicture(onSuccess_3, onFail_3, { quality: 90,
+		targetWidth: 400,
+		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
+		
+}
+function onSuccess_3(imageURI) {
+	//alert ('Success')
+    var image = document.getElementById('myImagePrescription_3');
+    image.src = imageURI;
+	imagePath = imageURI;
+	$("#prescriptionPhoto_1").val(imagePath);
+}
+function onFail_3(message) {
+	//alert ('Fail')
+	imagePath="";
+    alert('Failed because: ' + message);
 }
 
 
 
+function uploadPhoto(imageURI, imageName) {
+    var options = new FileUploadOptions();
+    options.fileKey="upload";
+    options.fileName=imageName;
+    options.mimeType="image/jpeg";
+	
+    var params = {};
+    params.value1 = "test";
+    params.value2 = "param";
+	
+    options.params = params;
+	
+    var ft = new FileTransfer();
+     ft.upload(imageURI, encodeURI(localStorage.photo_submit_url+"fileUploaderPrescription/"),winProfile,failProfile,options);
+	 
+}
+
+function winProfile(r) {
+}
+
+function failProfile(error) {
+	$("#error_prescription_submit").text('Memory Error. Please take new picture and Submit');
+}
 
 
 
