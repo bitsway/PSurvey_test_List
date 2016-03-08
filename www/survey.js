@@ -43,7 +43,7 @@ function check_user() {
 
 	//
 //	//var  apipath_base_photo_dm='http://c003.cloudapp.net/mrepacme/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
-//	var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
+	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
 //	
 //	
 	var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_prescription/get_path?CID='+cid +'&HTTPPASS=e99business321cba';
@@ -517,7 +517,7 @@ function prescription_submit(){
 		if (localStorage.pic_no==3){
 			prescriptionPhoto=$("#prescriptionPhoto_3").val();
 		}
-		prescriptionPhoto='dasdfadf'
+		//prescriptionPhoto='dasdfadf'
 		if (prescriptionPhoto==''){
 			$("#error_prescription_submit").html('Required picture');
 			$("#wait_image_prescription").show();
@@ -530,8 +530,8 @@ function prescription_submit(){
 				var medicine_1=$("#medicine_1").val();
 				var medicine_2=$("#medicine_2").val();
 				var medicine_3=$("#medicine_3").val();
-				var medicine_4=$("#medicine_4").val();
-				var medicine_5=$("#medicine_5").val();
+				var medicine_4='';
+				var medicine_5='';
 				
 				//$("#error_prescription_submit").text(localStorage.base_url+'prescription_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+encodeURIComponent(localStorage.user_pass)+'&synccode='+localStorage.synccode+'&areaId='+areaId+'&doctor_id='+encodeURIComponent(doctorId)+'&doctor_name='+encodeURIComponent(doctor_name)+'&medicine_1='+encodeURIComponent(medicine_1)+'&medicine_2='+encodeURIComponent(medicine_2)+'&medicine_3='+encodeURIComponent(medicine_3)+'&medicine_4='+encodeURIComponent(medicine_4)+'&medicine_5='+encodeURIComponent(medicine_5)+'&latitude='+latitude+'&longitude='+longitude+'&pres_photo='+imageName+'&campaign_doc_str='+localStorage.campaign_doc_str+'&version=1')							
 				//alert (localStorage.campaign_doc_str)
@@ -573,7 +573,7 @@ function prescription_submit(){
 											document.getElementById('myImagePrescription_1').src = '';
 											document.getElementById('myImagePrescription_2').src = '';
 											document.getElementById('myImagePrescription_3').src = '';
-											
+										
 											//image upload function									
 											uploadPhoto(prescriptionPhoto, imageName);
 											//alert ('0')
@@ -732,7 +732,8 @@ function onFail_3(message) {
 
 
 function uploadPhoto(imageURI, imageName) {
-    var options = new FileUploadOptions();
+    alert (localStorage.photo_submit_url)
+	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageName;
     options.mimeType="image/jpeg";
