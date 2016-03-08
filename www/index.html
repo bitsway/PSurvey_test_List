@@ -60,7 +60,7 @@
 		$("#wait_image_ret").hide();
 		$("#wait_image_prescription").hide();
 
-		
+		//alert (localStorage.unschedule_market_cmb_id)
 		$('#market_combo_id_lv').empty();
 		$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
 		$("#campaign_combo_id_lv").empty()
@@ -96,33 +96,56 @@
             </div>
     
     
-  <div class="view" id="mainview"> 
-<!--        <header>
-            <h1>Main</h1>
-        </header>-->
+  
+            
+            
+            
+            
+            
+          <!--  //============Login page Start-->
+    
+
+    
+    
+    <div class="view" id="loginView">
         <div class="pages">
-        
-        
-        	
-        
-            
-            
-          
- 
-             <div data-left-drawer="left" class="panel" ></div>
-            
-            
-            <!--//===================ImagePage-->
-            <div data-left-drawer="left" class="panel" id="imagePage" data-title="Image capture " >
-          
-                <br>
-                <div class="card">
-
-
-                   
-                    
-                    
+         <header><h1>Login</h1></header> 
+            <div class="panel" id="login">
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <br><br><br><br>
                     <div id="error_login" style="color:#C00"></div> 
+                    <div class="input-group">
+                    	<form>		
+						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
+                        <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="">
+                        <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
+                    </form>						
+                    </div>
+                     <input type="submit" id="loginButton" onClick="check_user()" style="width:100%; height:50px; background-color:#09C" value="     Sync     " onClick="new_ps()"  />
+                   <!-- <a class='button' id="loginButton" onClick="check_user()"  data-transition='up-reveal:dismiss'>Sync</a>-->
+                    <div align="center"><img id="wait_image_login" style="" width="50px;" src="loading.gif" alt=""></div>
+                    
+               <!-- </div>-->
+            </div>
+        </div>
+        <footer>
+		 <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+          <a href="#imagePage"></a>
+        </footer>
+
+    </div>
+
+      
+<!--//==============================Image Page=================-->
+       <div class="view" id="imagePageView">
+        <div class="pages">
+         <header><h1>Image capture</h1></header> 
+            <div class="panel" id="imagePage">
+            </br></br></br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     <div id="error_login" style="color:#C00"></div> 
                     <div class="input-group">
                     
                     <ul class="list">
@@ -164,129 +187,156 @@
 
 
                     </ul>
-                    				
                     </div>
-				</br></br></br></br>
-                
-                    
-                   
-                    
-                </div>
-            </div>
-            
-            
-            
-            
-            <!--===========================Market-->
-           <div data-left-drawer="left" class="panel" id="marketPage" data-title="Market " >
-          
-                <br>
-                <!--<div class="card">-->
-   
-                    
-                    <div id="error_login" style="color:#C00"></div> 
-                    <div class="input-group">
-                <div class="input-group">   
-                 <input type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="mysearch()"  />
-                </div>
-				
-                 <ul class="list" id="market_combo_id_lv" >
-                
-                </ul>
-                 <!--   				
-                    </div>-->
-                    
-                   
-                    
-                </div>
-            </div>
-            
-            
-           <!-- //======================Doctor-->
-         
-           <div data-left-drawer="left" class="panel" id="page_doctor" data-title="Doctor" >
-          
-                <br>
-                <!--<div class="card">-->
-          
-                    </br>
-                    <div><b>Market :</b><span class="market"></span></div>
-                    <br>
-                    
-                    
-                    <div id="err_m_retailer_next" style="color:#C00"></div> 
-                    <div class="input-group">
-                 
-                 <input type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="mysearch()"  />
-                </div>
-
-                 <ul class="list" id="doctor_combo_id_lv" >
-                
-                </ul>
-                    	<img id="wait_image_ret" style="width:50" src="loading.gif" alt="">			
-                    
-                    
-                   
                     
                <!-- </div>-->
             </div>
-            
-            
-            
-            
-            
-            <!-- //======================Product-->
-         
-           <div data-left-drawer="left" class="panel" id="page_doctor_campaign" data-title="Product" >
-          
-                <br>
-              <!--  <div class="card">-->
+        </div>
+        <footer>
+		  <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+           <a href="#login"> Sync </a>
+        </footer>
 
+    </div>      
+             
+
+  <!--//==============================Market Page=================-->
+       <div class="view" id="marketPageView">
+        <div class="pages">
+         <header><h1>Market</h1></header> 
+            <div class="panel" id="marketPage">
+            </br></br></br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     <div id="error_login" style="color:#C00"></div> 
+                    
+                 <div class="input-group"> 
+                 <input type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="mysearch()"  />
+                </div>
+				
+                         <ul class="list" id="market_combo_id_lv" >
+                        
+                        </ul>
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		 <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+          <a href="#login"> Sync </a>
+        </footer>
+
+    </div>               
+                      
+            
+            
+  
+ 
+  <!--//==============================Doctor Page=================-->
+       <div class="view" id="doctorPageView">
+        <div class="pages">
+         <header><h1>Doctor List</h1></header> 
+            <div class="panel" id="page_doctor">
+            </br></br></br></br></br></br>
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                     <div id="err_m_retailer_next" style="color:#C00"></div> 
+                    <div class="input-group">
+                         <input type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="mysearch()"  />
+                        </div>
+        
+                         <ul class="list" id="doctor_combo_id_lv" >
+                        
+                        </ul>
+                                <img id="wait_image_ret" style="width:50" src="loading.gif" alt="">		
+                    </div>
+                    
+               <!-- </div>-->
+            </div>
+       
+        <footer>
+		 <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+           <a href="#login"> Sync </a>
+        </footer>
+
+    </div> 
+  
+  
+<!--//==============================Product Page=================-->
+
+      <div class="view" id="doctorCampaignPageView">
+        <div class="pages">
+         <header style="height:100px">
+         </br>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                  </td>
+                            <td width="2%">
+                     
+                            </td>
+                    <td width="70%">
+                       <div class="input-group">   
+                         <input id="itemSearch" type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="searchItem()"  />
+                        </div>
+                          
+                            
+                            </td>
+                            <td width="10%"></td>
+                            <td align="right">
+                             
+             <input type="submit" id="input" style="height:50px; background-color:#09C" value="     Next >>     " onClick="getDocCampaignData()"  />
+                     
+                            </td>
+                            <td width="2%">
+                     
+                            </td>
+                          </tr>
+                        </table>
+         
+         
+         </header> 
+            <div class="panel" id="page_doctor_campaign">
+            </br></br></br></br></br></br></br>
+            
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
                     <div><b>Market :</b><span class="market"></span></div>
                      <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>   
-                    
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td width="70%">
-					<div class="input-group">   
-                 <input id="itemSearch" type="text" id="input" style="width:100%" placeholder="Search" onKeyUp="searchItem()"  />
-                </div>
-                  
-					
-					</td>
-                    <td width="10%"></td>
-                    <td align="right">
-                     
-     <input type="submit" id="input" style="height:50px; background-color:#09C" value="     Next >>     " onClick="getDocCampaignData()"  />
-             
-                    </td>
-                  </tr>
-                </table>
-                    
-                    <div id="myerror_doctor_campaign" style="color:#C00"></div> 
-                    <div class="input-group">
-                
-				
-                 <ul class="list" id="campaign_combo_id_lv" >
-                
-                </ul>
-                    		
-                    </div>
-                    
+                    </br></br>
                    
-                    
+                            
+                            <div id="myerror_doctor_campaign" style="color:#C00"></div> 
+                            <div class="input-group">
+                        
+                        
+                         <ul class="list" id="campaign_combo_id_lv" >
+                        
+                        </ul>
+                                    
+                            
+                 </div>
+                   </div> 
                <!-- </div>-->
             </div>
-            
- 
- 		 <!--===========================Othesr-->
-           <div data-left-drawer="left" class="panel" id="page_prescription" data-title="Other Medicine" >
-          
-                <br>
-               <!-- <div class="card">-->
+       
+        <footer>
+		  <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+           <a href="#login"> Sync </a>
+        </footer>
 
-                    
-                    <div id="error_login" style="color:#C00"></div> 
+    </div> 
+  
+  <!-- //======================Others Medicine-->
+         
+      <div class="view" id="page_prescriptionView">
+        <div class="pages">
+         <header><h1>Other Medicine</h1></header> 
+            <div class="panel" id="page_prescription">
+                <br><br><br><br><br>
+              <!--  <div class="card">-->
+          
+                <div id="error_login" style="color:#C00"></div> 
                     <div class="input-group">
 
                              <table  border="0" class="ui-body-d ui-shadow table-stripe ui-responsive" data-role="table" data-theme="d"  data-mode="display:none" style="cell-spacing:0px; width:100%; font-size:98%;">
@@ -313,11 +363,7 @@
                           <input type="text" id="medicine_3" style="width:100%" placeholder="Medicine Name 3"   />
                            </td >
                         </tr>
-                               
                     </table>
-                    
-                    
-                    
                     <br>
         
                         
@@ -336,112 +382,59 @@
                         <img id="wait_image_prescription" style="" width="50px;" src="loading.gif" alt="">
                         </div>
                 </div>
-			
-                
-
-                    
-                   
-                    
-             <!--   </div>-->
+               <!-- </div>-->
             </div>
  
- 
- 
- 			<!-- //======================Success-->
-         
-           <div data-left-drawer="left" class="panel" id="page_success" data-title="Success " >
-          
-                <br>
-              <!--  <div class="card">-->
-          
-                 <div id="success_message" style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; margin:0px auto; height:200px; color:#FFF; font-size:20px; vertical-align:middle; text-align:center; padding-top:5px;" ></br>Submitted Successfully</div>
+        </div>
+        <footer>
+        
+             <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
+             <a href="#login"> Sync </a>
+        </footer>
+
+       
+    </div>
+  
+  
+  
+  
+ <!-- //============Success================-->
+  
+  
+   <div class="view" id="page_successView">
+        <div class="pages">
+         <header><h1>Login</h1></header> 
+            <div class="panel" id="page_success">
+                <!--<div class="card">-->
+                    <!--<h1>Sync</h1>-->
+                    <br><br><br><br>
+                    <div id="error_login" style="color:#C00"></div> 
+                    <div id="success_message" style="background-image:url(result_back.png); background-repeat:no-repea; width:300px; margin:0px auto; height:200px; color:#FFF; font-size:20px; vertical-align:middle; text-align:center; padding-top:5px;" ></br>Submitted Successfully</div>
             
             <br>
             <br>
             <br>
             <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C" value="     New     " onClick="new_ps()"  />
-          
 			<br>
-                    
-                   
-                    
                <!-- </div>-->
-            </div>
- 
- 
- 
- 
-            
-                      <!--  <div id="afforms" title="Form Styles" class="panel" data-include="partials/forms.html"></div>-->
-
-            <!--<div id="lockscreen" title="Lock Screen" class="panel" data-include="partials/lockscreen.html"></div>-->
-        </div>
-        
-        
-        
-        <footer>
-        
-            <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
-             <a href="#login"> Sync </a>
-
-           <!-- <a href="#main" class="icon html5" data-transition="slide"></a>
-            <a href="#main" class="icon trash" data-transition="up-reveal"></a>
-            <a href="/foo/bar" class="icon trash"  data-transition="slide"></a>-->
-        </footer>
-
-       
-    </div>
-            
-            
-            
-            
-            
-          <!--  //============Login page Start-->
-    <div class="view" id="loginView">
-        <div class="pages">
-            <div class="panel" id="login">
-                <br>
-                <div class="card">
-                    <h1>Sync</h1>
-                    <br>
-                    <div id="error_login" style="color:#C00"></div> 
-                    <div class="input-group">
-                    	<form>		
-						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
-                        <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="">
-                        <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
-                    </form>						
-                    </div>
-                    
-                    <a class='button' id="loginButton" onClick="check_user()"  data-transition='up-reveal:dismiss'>Sync</a>
-                    
-                    <div align="center"><img id="wait_image_login" style="" width="50px;" src="loading.gif" alt=""></div>
-                    
-                </div>
             </div>
         </div>
         <footer>
 		 <a href="#imagePage" class="icon home" data-transition="slide">Home</a>
-          <a href="#imagePage"></a>
+          <a href="#login"> Sync </a>
         </footer>
 
     </div>
-
-      
-
-             <!--Select territory page --------------------------------------------------------------- --> 
+  
+  
+  
+  
+  
+  
+  
+  
             
-            
-            
-            
-             
-
-            
-                      
-            
-            
-            
-            <script type="text/javascript" src="phonegap.js"></script>
+ <script type="text/javascript" src="phonegap.js"></script>
 
           
               

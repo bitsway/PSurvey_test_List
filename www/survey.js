@@ -69,8 +69,8 @@ function check_user() {
 		localStorage.photo_submit_url='';
 		
 		//alert(apipath_base_photo_dm);
-		//$("#loginButton").hide();
-		//$("#wait_image_login").show();
+		$("#loginButton").hide();
+		$("#wait_image_login").show();
 		
 		//$("#error_login").html(apipath_base_photo_dm);
 		$.post(apipath_base_photo_dm,{ },
@@ -110,7 +110,7 @@ function check_user() {
 								
 								 function(data, status){
 									 if (status!='success'){
-										 $("#wait_image_login").hide();
+										$("#wait_image_login").hide();
 										$("#loginButton").show();
 										$("#error_login").html('Sorry Network not available');
 									 }
@@ -613,7 +613,7 @@ function prescription_submit(){
 
 function new_ps(){
 	$.afui.loadContent("#imagePage",true,true);
-	location.reload();
+//	location.reload();
 
 	
 }
