@@ -43,7 +43,7 @@ function check_user() {
 
 	//
 //	//var  apipath_base_photo_dm='http://c003.cloudapp.net/mrepacme/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
-	//var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
+//	var  apipath_base_photo_dm='http://127.0.0.1:8000/mrepbiopharma/syncmobile_prescription/dm_prescription_path?CID='+cid +'&HTTPPASS=e99business321cba'
 //	
 //	
 	var apipath_base_photo_dm ='http://e2.businesssolutionapps.com/welcome/dmpath_prescription/get_path?CID='+cid +'&HTTPPASS=e99business321cba';
@@ -223,7 +223,7 @@ function gotoMarket(pic_no) {
 	//alert (pic_no)
 	if (pic_no!=localStorage.pic_no){
 		$("#campaign_combo_id_lv").empty()
-		$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign);
+		$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign); 
 	}
 	localStorage.pic_no=pic_no
 	$.afui.loadContent("#marketPage",true,true);
@@ -512,6 +512,15 @@ function prescription_submit(){
 		var latitude=$("#lat").val();
 		var longitude=$("#long").val();		
 		var prescriptionPhoto
+		var prescriptionPhoto_1=$("#prescriptionPhoto_1").val();
+		var prescriptionPhoto_2=$("#prescriptionPhoto_2").val();
+		var prescriptionPhoto_3=$("#prescriptionPhoto_3").val();
+		
+		localStorage.prescriptionPhoto_1 = prescriptionPhoto_1;
+		localStorage.prescriptionPhoto_2 = prescriptionPhoto_2;
+		localStorage.prescriptionPhoto_3 = prescriptionPhoto_3;
+		
+		
 		if (localStorage.pic_no==1){
 			prescriptionPhoto=$("#prescriptionPhoto_1").val();
 		}
@@ -581,18 +590,34 @@ function prescription_submit(){
 											//image upload function									
 											uploadPhoto(prescriptionPhoto, imageName);
 											//alert ('0')
-											alert (localStorage.pic_no)
-											if (localStorage.pic_no==1){
-												alert (localStorage.pic_no)
+											//alert (localStorage.pic_no)
+											if (localStorage.pic_no==1){								
+												var image2 = document.getElementById('myImagePrescription_2');
+    											image2.src = localStorage.prescriptionPhoto_2;
+												
+												var image3 = document.getElementById('myImagePrescription_3');
+    											image3.src = localStorage.prescriptionPhoto_3;
+												
+												//alert (localStorage.pic_no)
 												$("#prescriptionPhoto_1").val('');
 												
 											}
 											else if (localStorage.pic_no==2){
-												alert (localStorage.pic_no)
+												var image1 = document.getElementById('myImagePrescription_1');
+    											image1.src = localStorage.prescriptionPhoto_1;
+												
+												var image3 = document.getElementById('myImagePrescription_3');
+    											image3.src = localStorage.prescriptionPhoto_3;
+												
 												$("#prescriptionPhoto_2").val('');
 											}
 											else if (localStorage.pic_no==3){
-												alert (localStorage.pic_no)
+												var image1 = document.getElementById('myImagePrescription_1');
+    											image1.src = localStorage.prescriptionPhoto_1;
+												
+												var image2 = document.getElementById('myImagePrescription_2');
+    											image2.src = localStorage.prescriptionPhoto_2;
+												
 												$("#prescriptionPhoto_3").val('');
 											}
 											
@@ -725,7 +750,7 @@ function getPrescriptionImage_3() {
 		
 }
 function onSuccess_3(imageURI) {
-	alert ('Success')
+	//alert ('Success')
     var image = document.getElementById('myImagePrescription_3');
     image.src = imageURI;
 	imagePath = imageURI;

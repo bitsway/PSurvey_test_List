@@ -65,7 +65,19 @@
 		$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
 		$("#campaign_combo_id_lv").empty()
 		$("#campaign_combo_id_lv").append(localStorage.product_tbl_doc_campaign);
-		$.afui.loadContent("#imagePage",true,true,"up");	
+		
+		
+		var image1 = document.getElementById('myImagePrescription_1');
+		image1.src = localStorage.prescriptionPhoto_1;
+		
+		var image2 = document.getElementById('myImagePrescription_2');
+		image2.src = localStorage.prescriptionPhoto_2;
+		
+		var image3 = document.getElementById('myImagePrescription_3');
+		image3.src = localStorage.prescriptionPhoto_3;
+		
+		
+		$.afui.loadContent("#imagePage",true,true);	
 
     });
 
