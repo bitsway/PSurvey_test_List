@@ -762,7 +762,7 @@ function searchItem() {
 
 function searchMarket() {
 	var filter  = $("#marketSearch").val().toUpperCase();
-	alert (filter);
+	//alert (filter);
 	 var lis =document.getElementById("market_combo_id_lv").getElementsByTagName("li");
 
 	for (var i = 0; i < lis.length; i++) {
