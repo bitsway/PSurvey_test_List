@@ -1,7 +1,20 @@
 
 
-
+//function homePage_set() {
+//	if (localStorage.synced=='YES'){
+//			$.afui.loadContent("#imagePage",true,true,'right');
+//
+//		
+//		}
+//		else{
+//			alert ('asdasf');
+//			$.afui.loadContent("#login",true,true,'right');
+//				
+//			$("#error_login").html('Please Sync First');
+//		}
+//}
 function homePage() {
+	
 	$.afui.loadContent("#imagePage",true,true,'right');
 }
 function marketPage() {

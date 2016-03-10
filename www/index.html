@@ -81,18 +81,19 @@
 		//alert (localStorage.synced)
 		
 		//localStorage.synced==''
-		if (localStorage.synced=='YES'){
+		//if (localStorage.synced=='YES'){
 			$.afui.loadContent("#imagePage",true,true,'right');
-			
+			//homePage();
 		
-		}
-		else{
-			//alert ('asdasf');
-			$.afui.loadContent("#loginView",true,true,'right');	
-			$("#error_login").html('Please Sync First');
-		}
+		//}
+		//else{
+		//	alert ('asdasf');
+			//$.afui.loadContent("#loginView",true,true,'right');
+			//loginPage();	
+		//	$("#error_login").html('Please Sync First');
+		//}
 		
-		
+		//homePage()
 		getLocation()
 
     });
