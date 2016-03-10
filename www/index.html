@@ -81,16 +81,15 @@
 		//alert (localStorage.synced)
 		
 		
-		if (localStorage.synced!='YES'){
-			$.afui.loadContent("#login",true,true,'right');
-			//$.afui.loadContent("#loginView",true,true);	
-			$("#error_login").html('Please Sync First');
-			//alert ('Please Sync First');
+		if (localStorage.synced=='YES'){
+			$.afui.loadContent("#imagePage",true,true,'right');
+			
 		
 		}
 		else{
 			//alert ('asdasf');
-			$.afui.loadContent("#imagePage",true,true);	
+			$.afui.loadContent("#login",true,true);	
+			$("#error_login").html('Please Sync First');
 		}
 		
 		
