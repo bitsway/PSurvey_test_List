@@ -81,7 +81,7 @@
 		if (localStorage.synced=='NO'){
 			$.afui.loadContent("#loginView",true,true,'right');
 			//$.afui.loadContent("#loginView",true,true);	
-			$("#error_login").html('Please Sync First');
+			//$("#error_login").html('Please Sync First');
 			//alert ('Please Sync First');
 		
 		}
@@ -176,7 +176,7 @@
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic" onClick="getPrescriptionImage_1()"></td>
                                 <td width="33%" align="center">
-                                <img src="images.png" width="70" height="70" alt="Image" id="myImagePrescription_1">
+                                <div id="myImagePrescription_1"><img src="images.png" width="70" height="70" alt="Image" ></div>
                                 <input name="prescriptionPhoto_1" id="prescriptionPhoto_1" type="hidden" value="">
                                 </td>
                                 <td width="33%" align="center" onClick="gotoMarket(1)">
@@ -192,7 +192,7 @@
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" onClick="getPrescriptionImage_2()" width="70" height="70" alt="TakePic"></td>
                                 <td width="33%" align="center">
-                                <img src="images.png"  width="70" height="70" alt="Image"  id="myImagePrescription_2">
+                                <div id="myImagePrescription_2"><img src="images.png"  width="70" height="70" alt="Image" ></div>
                                 <input name="prescriptionPhoto_2" id="prescriptionPhoto_2" type="hidden" value="">
                                 </td>
                                 <td width="33%" align="center" onClick="gotoMarket(2)"><img src="icon-arrow-right.png" width="70" height="70" alt="Next" ></td>
@@ -207,7 +207,7 @@
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" onClick="getPrescriptionImage_3()" width="70" height="70" alt="TakePic"></td>
                                 <td width="33%" align="center">
-                                <img src="images.png" width="70" height="70" alt="Image" id="myImagePrescription_3">
+                                <div id="myImagePrescription_3"><img src="images.png" width="70" height="70" alt="Image" ></div>
                                 <input name="prescriptionPhoto_3" id="prescriptionPhoto_3" type="hidden" value="">
                                 </td>
                                 <td width="33%" align="center" onClick="gotoMarket(3);getLocation();"><img src="icon-arrow-right.png" width="70" height="70" alt="Next"></td>
