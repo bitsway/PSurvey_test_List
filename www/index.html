@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Demo App</title>
+    <title>M-Reporting</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -75,19 +75,35 @@
 		
 		var image3 = document.getElementById('myImagePrescription_3');
 		image3.src = localStorage.prescriptionPhoto_3;
+		//alert (localStorage.synced)
 		
 		
-		$.afui.loadContent("#imagePage",true,true);	
+		if (localStorage.synced=='NO'){
+			$.afui.loadContent("#loginView",true,true,'right');
+			//$.afui.loadContent("#loginView",true,true);	
+			$("#error_login").html('Please Sync First');
+			//alert ('Please Sync First');
+		
+		}
+		else{
+			//alert ('asdasf');
+			$.afui.loadContent("#imagePage",true,true);	
+		}
+		
+		
+		getLocation()
 
     });
 
     //if($.os.ios)
         $.afui.animateHeader(true);
-		getLocation()
+		
 
     </script>
     
-
+	<style>
+	 li:hover { color:#FFF; background-color:#006B9F; font-size:14px }
+	</style>
     
 </head>
 
@@ -99,26 +115,17 @@
 
 
 <body >
-    <div id="splashscreen" class='ui-loader heavy'>
+   		 <div id="splashscreen" class='ui-loader heavy'>
                 M-Reporting
                 <br>
                 <br>
-                <span class='ui-icon ui-icon-loading spin'></span>
-                <h1>Starting app</h1>
+                <span ><img style="" width="50px;" src="loading.gif" alt=""></span>
+                <h1>Starting....</h1>
 
             </div>
     
     
-  
-            
-            
-            
-            
-            
           <!--  //============Login page Start-->
-    
-
-    
     
     <div class="view" id="loginView">
         <div class="pages">
@@ -135,7 +142,7 @@
                         <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
                     </form>						
                     </div>
-                     <input type="submit" id="loginButton" onClick="check_user()" style="width:100%; height:50px; background-color:#09C" value="     Sync     " onClick="new_ps()"  />
+                     <input type="submit" id="loginButton" onClick="check_user()" style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Sync     " onClick="new_ps()"  />
                    <!-- <a class='button' id="loginButton" onClick="check_user()"  data-transition='up-reveal:dismiss'>Sync</a>-->
                     <div align="center"><img id="wait_image_login" style="" width="50px;" src="loading.gif" alt=""></div>
                     
@@ -144,7 +151,8 @@
         </div>
         <footer>
 		 <a onClick="homePage()" class="icon home" >Home</a>
-          <a href="#imagePage"></a>
+         <a onClick="homePage()"  ></a>
+         <!-- <a href="#imagePage"></a>-->
         </footer>
 
     </div>
@@ -154,7 +162,7 @@
       
        <div class="view" id="imagePageView">
         <div class="pages">
-         <header><h1>Image capture</h1></header> 
+         <header><h1>RX capture</h1></header> 
             <div class="panel" id="imagePage">
             </br></br></br></br></br></br>
                 <!--<div class="card">-->
@@ -168,10 +176,12 @@
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" width="70" height="70" alt="TakePic" onClick="getPrescriptionImage_1()"></td>
                                 <td width="33%" align="center">
-                                <img src="" width="70" height="70" alt="Image" id="myImagePrescription_1">
+                                <img src="images.png" width="70" height="70" alt="Image" id="myImagePrescription_1">
                                 <input name="prescriptionPhoto_1" id="prescriptionPhoto_1" type="hidden" value="">
                                 </td>
-                                <td width="33%" align="center" onClick="gotoMarket(1)"><img src="icon-arrow-right.png" width="70" height="70" alt="Next" ></td>
+                                <td width="33%" align="center" onClick="gotoMarket(1)">
+                                <img src="icon-arrow-right.png" width="70" height="70" alt="Next" >
+                                </td>
                               </tr>
                             </table>
                                                                 
@@ -182,7 +192,7 @@
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" onClick="getPrescriptionImage_2()" width="70" height="70" alt="TakePic"></td>
                                 <td width="33%" align="center">
-                                <img src="" width="70" height="70" alt="Image"  id="myImagePrescription_2">
+                                <img src="images.png"  width="70" height="70" alt="Image"  id="myImagePrescription_2">
                                 <input name="prescriptionPhoto_2" id="prescriptionPhoto_2" type="hidden" value="">
                                 </td>
                                 <td width="33%" align="center" onClick="gotoMarket(2)"><img src="icon-arrow-right.png" width="70" height="70" alt="Next" ></td>
@@ -197,7 +207,7 @@
                               <tr>
                                 <td width="33%" align="center"><img src="camera.png" onClick="getPrescriptionImage_3()" width="70" height="70" alt="TakePic"></td>
                                 <td width="33%" align="center">
-                                <img src="" width="70" height="70" alt="Image" id="myImagePrescription_3">
+                                <img src="images.png" width="70" height="70" alt="Image" id="myImagePrescription_3">
                                 <input name="prescriptionPhoto_3" id="prescriptionPhoto_3" type="hidden" value="">
                                 </td>
                                 <td width="33%" align="center" onClick="gotoMarket(3);getLocation();"><img src="icon-arrow-right.png" width="70" height="70" alt="Next"></td>
@@ -217,8 +227,9 @@
         </div>
         <footer>
 		 
-           <a href="#login"><font style="font-size:18px; font-weight:bold"> Sync </font> </a> 
-           <a onClick="homePage()"></a>
+           <a href="#login" class="icon key" > Sync  </a> 
+            <a href="#login"  >   </a> 
+          <!-- <a onClick="homePage()"></a>-->
         </footer>
 
     </div>      
@@ -256,7 +267,9 @@
        
         <footer>
 		<a onClick="homePage()" class="icon home" >Home</a>
-          <a href="#login"><font style="font-size:18px; font-weight:bold"> Sync </font> </a> </footer>
+        <a onClick="homePage()"  ></a>
+          <!--<a href="#login"><font style="font-size:18px; font-weight:bold"> Sync </font> </a>--> 
+          </footer>
 
     </div>               
                       
@@ -302,7 +315,9 @@
        
         <footer>
 		 <a onClick="homePage()" class="icon home" >Home</a>
-           <a href="#login"><font style="font-size:18px; font-weight:bold"> Sync </font> </a> </footer>
+           <a onClick="homePage()" ></a>
+           
+            </footer>
 
     </div> 
   
@@ -328,7 +343,8 @@
                             </td>
                             <td width="10%"></td>
                             <td align="right">
-                             <img src="icon-arrow-right.png" width="40" height="40" alt="Next" onClick="getDocCampaignData()" >
+                            <img src="icon-arrow-right_1.png" width="40" height="40" alt="Next" onClick="getDocCampaignData()" >
+                            <!-- <img  class="icon right"   alt="Next" onClick="getDocCampaignData()" >-->
            <!--  <input type="submit" id="input" style="height:40px;  " onClick="getDocCampaignData()"  />-->
                      
                             </td>
@@ -365,10 +381,11 @@
             </div>
        
         <footer>
-        </br>
-        <a onClick="page_doctor()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" ></a>
+        
+        <a onClick="page_doctor()"><img class="icon left"  alt="Back" ></a>
 		  <a onClick="homePage()" class="icon home" >Home</a>
-           <a href="#login"><font style="font-size:18px; font-weight:bold"> Sync </font> </a> </footer>
+          
+           </footer>
 
     </div> 
   
@@ -430,13 +447,13 @@
                          <div id="error_prescription_submit" style="color:#B70000"></div>   
                         <br><br>
                         <div  id="btn_loc_submit" style="display:none">
-                        <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C" value="     Confirm Location     " onClick="getLocation()"  />
+                        <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Confirm Location     " onClick="getLocation()"  />
                                              
                         </div>
                        
                         
                         <div  id="btn_prescription_submit">
-                         <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C" value="     Submit     " onClick="prescription_submit()"  />
+                         <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Submit     " onClick="prescription_submit()"  />
                         
                         </div>
                          
@@ -451,7 +468,10 @@
         <footer>
         
              <a onClick="homePage()" class="icon home" >Home</a>
-             <a href="#login"><font style="font-size:18px; font-weight:bold"> Sync </font> </a> </footer>
+             <a onClick="homePage()"  ></a>
+            
+             
+              </footer>
 
        
     </div>
