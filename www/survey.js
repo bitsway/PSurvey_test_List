@@ -169,14 +169,6 @@ function check_user() {
 												var product_price=productArray2[2];
 												
 												var product_qty='';																		
-
-
-												//alert (productList[j])
-												//alert (product_name2.indexOf("A"))
-												
-												
-												
-												
 												
 												product_tbl_doc_campaign=product_tbl_doc_campaign+'<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin" onClick="check_boxTrue(\''+product_id2+'\')"> '+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox" onClick="getDocCampaignData_keyup(\''+product_id2+'\')" name="doc_camp'+product_id2+'" value="checkbox" id="doc_camp'+product_id2+'"><label for="doc_camp'+product_id2+'"></br></label><input type="hidden" id="doc_camp_id'+product_id2+'" value="'+product_id2+'" ><input type="hidden" id="doc_camp_price'+product_id2+'" value="'+product_price+'" ><input type="hidden" id="doc_camp_name'+product_id2.toUpperCase()+'" value="'+product_name2.toUpperCase()+'" placeholder="qty" ></td><td  style="text-align:left;">'+'</br><font id="'+ product_id2 +'" onClick="tr_item_doc_campaign(\''+product_id2+'\')" class="name" >'+ product_name2.toUpperCase()+'</font></td></tr>'+'</table>'+'</li>';
 												//$("#error_login").html('Processing Product List....');	
@@ -186,7 +178,6 @@ function check_user() {
 											localStorage.product_tbl_doc_campaign=product_tbl_doc_campaign
 											
 											//================Market
-											//------------- Visit Plan Market List / Client Profile Market List / Unschedule
 													var planMarketList = localStorage.marketListStr.split('<rd>');
 													var planMarketListShowLength=planMarketList.length	
 													

@@ -56,8 +56,8 @@
 
     $(document).ready(function(){
         $.afui.launch();
-		alert (localStorage.synced)
-		alert (localStorage.click_flag)
+		//alert (localStorage.synced)
+		//alert (localStorage.click_flag)
 		localStorage.click_flag=0;
 		$("#wait_image_login").hide();
 		$("#wait_image_ret").hide();
@@ -81,7 +81,7 @@
 		//alert (localStorage.synced)
 		
 		
-		if (localStorage.synced=='YES'){
+		if (localStorage.synced!='YES'){
 			$.afui.loadContent("#loginView",true,true,'right');
 			//$.afui.loadContent("#loginView",true,true);	
 			//$("#error_login").html('Please Sync First');
@@ -385,7 +385,7 @@
        
         <footer>
         
-        <a onClick="page_doctor()"><img class="icon left"  alt="Back" ></a>
+          <a onClick="page_doctor()" class="icon left" >Back</a>
 		  <a onClick="homePage()" class="icon home" >Home</a>
           
            </footer>
