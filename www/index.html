@@ -72,12 +72,16 @@
 		
 		var image1 = document.getElementById('myImagePrescription_1');
 		image1.src = localStorage.prescriptionPhoto_1;
+		$("#prescriptionPhoto_1").val(localStorage.prescriptionPhoto_1)
+	
 		
 		var image2 = document.getElementById('myImagePrescription_2');
 		image2.src = localStorage.prescriptionPhoto_2;
+		$("#prescriptionPhoto_2").val(localStorage.prescriptionPhoto_2)
 		
 		var image3 = document.getElementById('myImagePrescription_3');
 		image3.src = localStorage.prescriptionPhoto_3;
+		$("#prescriptionPhoto_3").val(localStorage.prescriptionPhoto_3)
 		//alert (localStorage.synced)
 		
 		//localStorage.synced==''
@@ -301,7 +305,7 @@
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
                     <div><b>Market :</b><span class="market"></span></div>
-                    </br></br>
+                    </br>
                      <div id="err_m_retailer_next" style="color:#C00"></div> 
                    <!-- <div class="input-group">-->
                          <input type="text" id="doctorSearch" style="width:100%" placeholder="Search" onKeyUp="searchDoctor()"  />
@@ -366,7 +370,7 @@
                     <!--<h1>Sync</h1>-->
                     <div><b>Market :</b><span class="market"></span></div>
                      <div><b>Doctor :</b><span class="visit_client" style="font-weight:bold"></span></div>   
-                    </br></br>
+                    </br>
                    
                             
                             <div id="myerror_doctor_campaign" style="color:#C00"></div> 
@@ -450,7 +454,7 @@
                          <div id="error_prescription_submit" style="color:#B70000"></div>   
                         <br><br>
                         <div  id="btn_loc_submit" style="display:none">
-                        <input type="submit" id="input" style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Confirm Location     " onClick="getLocation()"  />
+                        <!--<input type="submit" id="input" style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     Confirm Location     " onClick="getLocation()"  />-->
                                              
                         </div>
                        

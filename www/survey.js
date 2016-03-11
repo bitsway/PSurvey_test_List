@@ -34,27 +34,33 @@ function page_doctor(){
 //-------GET GEO LOCATION
 function getLocation() {
 	$("#error_prescription_submit").html("Confirming location. Please wait.");
+	$("#btn_prescription_submit").hide();
 	//$("#btn_prescription_submit").show();
-	var options = { enableHighAccuracy: false};
+	//var options = { enableHighAccuracy: false};
+	var options = { enableHighAccuracy: false, timeout:15000};
 	navigator.geolocation.getCurrentPosition(onSuccess, onError , options);	
+	
 }
 
 // onSuccess Geolocation
 function onSuccess(position) {
 	$("#lat").val(position.coords.latitude);
 	$("#long").val(position.coords.longitude);
+	localStorage.latitude_found=position.coords.latitude;
+	localStorage.longitude_found=position.coords.longitude;
 	$("#error_prescription_submit").html("Location Confirmed");
 	$("#btn_prescription_submit").show();
-	$("#btn_loc_submit").hide();
+	//$("#btn_loc_submit").hide();
 }
 
 // onError Callback receives a PositionError object
 function onError(error) {
    $("#lat").val(0);
    $("#long").val(0);
-   $("#error_prescription_submit").html("Failed to Confirmed Location.");
+   
+   $("#error_prescription_submit").html("Location can not be confirmed. Last recorded location will be used.");
    $("#btn_prescription_submit").show();
-   $("#btn_loc_submit").hide();
+ //  $("#btn_loc_submit").hide();
   // $("#btn_prescription_submit").hide();
   // $("#btn_loc_submit").show();
 }
@@ -101,6 +107,10 @@ function check_user() {
 		localStorage.base_url='';
 	    localStorage.photo_url='';
 		localStorage.photo_submit_url='';
+		
+		
+		localStorage.latitude_found=0;
+		localStorage.longitude_found=0;
 		
 		//alert(apipath_base_photo_dm);
 		$("#loginButton").hide();
@@ -636,8 +646,8 @@ function prescription_submit(){
 						medicine_3:encodeURIComponent(medicine_3),
 						medicine_4:encodeURIComponent(medicine_4),
 						medicine_5:encodeURIComponent(medicine_5),
-						latitude:latitude,
-						longitude:longitude,
+						latitude:localStorage.latitude_found,
+						longitude:localStorage.longitude_found,
 						pres_photo:imageName,
 						campaign_doc_str:localStorage.campaign_doc_str,
 						version:'1'},
@@ -668,9 +678,11 @@ function prescription_submit(){
 											if (localStorage.pic_no==1){								
 												var image2 = document.getElementById('myImagePrescription_2');
     											image2.src = localStorage.prescriptionPhoto_2;
+												$("#prescriptionPhoto_2").val(localStorage.prescriptionPhoto_2)
 												
 												var image3 = document.getElementById('myImagePrescription_3');
     											image3.src = localStorage.prescriptionPhoto_3;
+												$("#prescriptionPhoto_3").val(localStorage.prescriptionPhoto_3)
 												
 												//alert (localStorage.pic_no)
 												$("#prescriptionPhoto_1").val('');
@@ -679,18 +691,23 @@ function prescription_submit(){
 											else if (localStorage.pic_no==2){
 												var image1 = document.getElementById('myImagePrescription_1');
     											image1.src = localStorage.prescriptionPhoto_1;
+												$("#prescriptionPhoto_1").val(localStorage.prescriptionPhoto_1)
+												
 												
 												var image3 = document.getElementById('myImagePrescription_3');
     											image3.src = localStorage.prescriptionPhoto_3;
+												$("#prescriptionPhoto_3").val(localStorage.prescriptionPhoto_3)
 												
 												$("#prescriptionPhoto_2").val('');
 											}
 											else if (localStorage.pic_no==3){
 												var image1 = document.getElementById('myImagePrescription_1');
     											image1.src = localStorage.prescriptionPhoto_1;
+												$("#prescriptionPhoto_1").val(localStorage.prescriptionPhoto_1)
 												
 												var image2 = document.getElementById('myImagePrescription_2');
     											image2.src = localStorage.prescriptionPhoto_2;
+												$("#prescriptionPhoto_2").val(localStorage.prescriptionPhoto_2)
 												
 												$("#prescriptionPhoto_3").val('');
 											}
@@ -713,13 +730,11 @@ function prescription_submit(){
 											$("#prescriptionPhoto").val("");
 											
 											$("#wait_image_prescription").hide();
-											$("#btn_prescription_submit").hide();
+											$("#btn_prescription_submit").show();
 											//alert ('2')
 											//--------------------------
 											//clear_mgs();
-											$("#wait_image_prescription").hide();
-											$("#btn_prescription_submit").hide();
-											$("#btn_loc_submit").show();
+											
 
 											$.afui.loadContent("#page_success",true,true,'right');
 											
