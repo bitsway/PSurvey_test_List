@@ -686,6 +686,7 @@ function prescription_submit(){
 												
 												//alert (localStorage.pic_no)
 												$("#prescriptionPhoto_1").val('');
+												localStorage.prescriptionPhoto_1=''
 												
 											}
 											else if (localStorage.pic_no==2){
@@ -699,6 +700,7 @@ function prescription_submit(){
 												$("#prescriptionPhoto_3").val(localStorage.prescriptionPhoto_3)
 												
 												$("#prescriptionPhoto_2").val('');
+												localStorage.prescriptionPhoto_2=''
 											}
 											else if (localStorage.pic_no==3){
 												var image1 = document.getElementById('myImagePrescription_1');
@@ -710,6 +712,7 @@ function prescription_submit(){
 												$("#prescriptionPhoto_2").val(localStorage.prescriptionPhoto_2)
 												
 												$("#prescriptionPhoto_3").val('');
+												localStorage.prescriptionPhoto_3=''
 											}
 											
 											
